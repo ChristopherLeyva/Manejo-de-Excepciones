@@ -1,0 +1,38 @@
+def calculadora():
+    try:
+        # Solicitar al usuario los números y la operación
+        num1 = float(input("Ingrese el primer número: "))
+        num2 = float(input("Ingrese el segundo número: "))
+        operacion = input("Ingrese la operación (+, -, *, /): ")
+
+        # Realizar la operación correspondiente
+        if operacion == '+':
+            resultado = num1 + num2
+        elif operacion == '-':
+            resultado = num1 - num2
+        elif operacion == '*':
+            resultado = num1 * num2
+        elif operacion == '/':
+            # Manejo de excepción para la división por cero
+            if num2 == 0:
+                raise ZeroDivisionError("No se puede dividir por cero")
+            resultado = num1 / num2
+        else:
+            # Manejo de excepción para una operación no válida
+            raise ValueError("Operación no válida")
+
+        # Mostrar el resultado
+        print(f"El resultado es: {resultado}")
+
+    except ValueError as ve:
+        # Captura de excepciones relacionadas con valores incorrectos
+        print(f"Error: {ve}")
+    except ZeroDivisionError as zde:
+        # Captura de excepciones específicas de división por cero
+        print(f"Error: {zde}")
+    except Exception as e:
+        # Captura de cualquier otra excepción no prevista
+        print(f"Ocurrió un error inesperado: {e}")
+
+# Llamar a la función calculadora
+calculadora()
